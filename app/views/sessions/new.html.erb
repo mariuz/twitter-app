@@ -29,7 +29,7 @@
       <td>
         <%= @user.followers_count %>
       </td>
-    </tr>
+    </tr>    
   </table>
   <% unless @user.status.blank? %>
   <p>
@@ -41,6 +41,12 @@
   <% end %>
   <%= form_tag('/sessions/destroy', :method => :delete) do %>
     <%= submit_tag 'Sign out' %>
+  <% end %>
+  <%= form_tag('/sessions/follow', :method => :get) do %>
+    <%= submit_tag 'Follow' %>
+  <% end %>
+  <%= form_tag('/sessions/unfollow', :method => :get) do %>
+    <%= submit_tag 'Unfollow' %>
   <% end %>
 <% else %>
   <%= form_tag('/sessions') do %>

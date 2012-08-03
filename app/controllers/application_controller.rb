@@ -3,7 +3,7 @@ require 'twitter/authentication_helpers'
 class ApplicationController < ActionController::Base
   include Twitter::AuthenticationHelpers
   protect_from_forgery
-  rescue_from Twitter::Unauthorized, :with => :force_sign_in
+  rescue_from Twitter::Error::Unauthorized, :with => :force_sign_in
 
   private
 

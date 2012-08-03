@@ -1,8 +1,10 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 3.0.7'
-gem 'oauth', '~> 0.4.4'
-gem 'twitter', '~> 1.4.1'
+gem 'rails' 
+gem 'oauth' 
+gem 'twitter'
+gem 'uglifier'
+gem 'oj'
 
 group :test do
   gem 'rspec'
