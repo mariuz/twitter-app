@@ -34,15 +34,16 @@ class SessionsController < ApplicationController
       followers = Twitter.follower_ids(username,{:cursor=>cursor})
       cursor = followers.next_cursor
       followerIds+= followers.ids
-      sleep(2)
+     # sleep(2)
       puts followers.ids
     end
   end
   def unfollow
-    #users.each do |user|       
-    Twitter.follower_ids("BarackObama").ids.each do |user|
+    #users.each do |user|
+    username = param[:username]       
+    Twitter.follower_ids(username).ids.each do |user|
     #get_followers("BarackObama").each do |user|                   
-      Twitter.unfollow(users)
+      #Twitter.unfollow(user)
       puts user   
     end
     #end
@@ -52,12 +53,13 @@ class SessionsController < ApplicationController
   # https://support.twitter.com/groups/32-something-s-not-working/topics/117-following-problems/articles/66885-follow-limits-i-can-t-follow-people
   # Template::Error (DELETE https://api.twitter.com/1/friendships/destroy.json?user_id=306258358: 400: Rate limit exceeded. Clients may not make more than 350 requests per hour.)
   def follow
+    username = param[:username]
     #Twitter.follow(@users)    
-    #users.each do |user|       
+    Twitter.follower_ids(username).ids.each do |user|     
       #Twitter.follower_ids("recursive_bot").ids.each do |user|             
       #Twitter.follow(user)
-      #puts user    
-    #end
+      puts user    
+    end
   end
   
 end
