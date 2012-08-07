@@ -50,8 +50,7 @@
     <%= submit_tag 'Unfollow' %>    
   <% end %>
   
-  <%=link_to "Folow ajax",
-  :url => '/sessions/follow' ,:remote=> true  
+  <%=button_to "Folow ajax", follow_path, :remote=> true  
   #:before => "$('progress').show()",
   #:complete => "$('progress').hide()"
   %>
