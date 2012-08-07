@@ -53,12 +53,15 @@ class SessionsController < ApplicationController
   # https://support.twitter.com/groups/32-something-s-not-working/topics/117-following-problems/articles/66885-follow-limits-i-can-t-follow-people
   # Template::Error (DELETE https://api.twitter.com/1/friendships/destroy.json?user_id=306258358: 400: Rate limit exceeded. Clients may not make more than 350 requests per hour.)
   def follow
-    username = param[:username]
+    username = 'firebirdsql'#param[:username]
     #Twitter.follow(@users)    
     Twitter.follower_ids(username).ids.each do |user|     
       #Twitter.follower_ids("recursive_bot").ids.each do |user|             
       #Twitter.follow(user)
+      
       puts user    
+      render :text => "alert('Finished')",
+         :content_type => "text/javascript"
     end
   end
   

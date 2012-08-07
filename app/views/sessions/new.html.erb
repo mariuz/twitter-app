@@ -1,4 +1,5 @@
-<% if signed_in? %>
+<% javascript_include_tag :defaults 
+   if signed_in? %>
   <%= image_tag(@user.profile_image_url).html_safe %>
   <h3>
     Welcome <%= link_to(@user.name, @user.url) %>
@@ -46,8 +47,14 @@
     <%= submit_tag 'Follow' %>
   <% end %>
   <%= form_tag('/sessions/unfollow', :method => :get) do %>
-    <%= submit_tag 'Unfollow' %>
+    <%= submit_tag 'Unfollow' %>    
   <% end %>
+  
+  <%=link_to "Folow ajax",
+  :url => '/sessions/follow' ,:remote=> true  
+  #:before => "$('progress').show()",
+  #:complete => "$('progress').hide()"
+  %>
 <% else %>
   <%= form_tag('/sessions') do %>
     <%= image_submit_tag("sign-in-with-twitter.png") %>
